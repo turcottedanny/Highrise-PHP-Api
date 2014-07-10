@@ -72,7 +72,9 @@ class HighriseNote
         $this->setSubjectName($xml_obj->{'subject-name'});
         $this->setBody($xml_obj->{'body'});
 
-        return true;
+        unset($this->client); 
+        
+        return $this; 
     }
 
     public function setSubjectName($subject_name)

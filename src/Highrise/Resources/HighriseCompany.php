@@ -132,10 +132,13 @@ class HighriseCompany
         }
 
         if (isset($xml_obj->note) && count($xml_obj->note) > 0) {
+
             foreach ($xml_obj->note as $xml_note) {
+
                 $note = new HighriseNote($this->client);
-                $note->loadFromXMLObject($xml_note);
-                $this->addNote($note);
+
+                $this->notes[] = $note->loadFromXMLObject($xml_note);                 
+
             }
         }
 
