@@ -212,4 +212,14 @@ class HighriseNote
     {
         return $this->id;
     }
+
+    public function getType()
+    {
+        return $this->_note_type;
+    }
+
+    public function getUrl()
+    {
+        return $this->_note_url;
+    }
 }
