@@ -6,8 +6,8 @@ use Highrise\HighriseAPI;
 
 class HighriseNote
 {
-    protected $_note_type;
-    protected $_note_url;
+    public $_note_type;
+    public $_note_url;
     public $id;
     public $author_id;
     public $body;
@@ -72,7 +72,9 @@ class HighriseNote
         $this->setSubjectName($xml_obj->{'subject-name'});
         $this->setBody($xml_obj->{'body'});
 
-        return true;
+        unset($this->client); 
+
+        return $this; 
     }
 
     public function setSubjectName($subject_name)
