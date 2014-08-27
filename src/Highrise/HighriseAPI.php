@@ -86,6 +86,7 @@ class HighriseAPI
 
     public $account;
     public $token;
+    public $userAgent = 'Libcast Highrise SDK (https://github.com/libcast/Highrise-PHP-Api)';
     protected $curl;
     public $debug;
 
@@ -94,7 +95,11 @@ class HighriseAPI
         $this->curl = curl_init();
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
 
-        curl_setopt($this->curl, CURLOPT_HTTPHEADER, array('Accept: application/xml', 'Content-Type: application/xml'));
+        curl_setopt($this->curl, CURLOPT_HTTPHEADER, array(
+            'Accept: application/xml',
+            'Content-Type: application/xml',
+            'User-Agent: '.$this->userAgent,
+        ));
         // curl_setopt($curl,CURLOPT_POST,true);
         curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, 0);
@@ -109,6 +114,15 @@ class HighriseAPI
     {
         $this->token = $token;
         curl_setopt($this->curl, CURLOPT_USERPWD, $this->token . ':x');
+    }
+
+    public function setUserAgent($userAgent)
+    {
+        $this->userAgent = $userAgent;
+
+        curl_setopt($this->curl, CURLOPT_HTTPHEADER, array(
+            'User-Agent: '.$this->userAgent,
+        ));
     }
 
     public function postDataWithVerb($path, $request_body, $verb = "POST")
