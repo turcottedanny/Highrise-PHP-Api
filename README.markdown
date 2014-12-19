@@ -14,16 +14,11 @@ So, what's new ?
 * Some refactoring
 
 
-If you want to use the composer autoloader in your project, here is the way to do it:    
+If you want to use the composer to load Highrise-PHP-Api, you can run:    
 
-In the HighriseAPI repository, run:
-
-        curl -s https://getcomposer.org/installer | php
-        php composer.phar install
-
-Then just put the following code on your project:
-
-        require_once('vendor/autoload.php');
+```
+composer require libcast/highrise
+```
 
 Introduction
 ============
